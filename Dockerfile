@@ -7,8 +7,9 @@ EXPOSE 2525 4545 5555
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de configuración si los tienes
-# COPY config.json /app/config.json
+# Verifica la instalación de Mountebank
+RUN mb --version
 
 # Comando para ejecutar Mountebank
-CMD ["mb", "start", "--allowInjection"]
+ENTRYPOINT ["mb"]
+CMD ["start", "--allowInjection"]
